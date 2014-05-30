@@ -1,6 +1,11 @@
+[OPTIONS]
+Threads		= 8
+
+
 [PATHS]
 bwa 		= /Installs/bwa
 samtools	= /Installs/samtools
+delly		= /home/ec2-user/Store1/Scripts/SVpipe/bin/delly_v0.5.4_parallel_linux_x86_64bit
 reference	= /home/ec2-user/Store2/Analysis/References/CHO_novectors.ref.fasta
 vector_dir	= /home/ec2-user/Store2/Analysis/References/Vectors
 data_dir	= /home/ec2-user/Store2/Data
