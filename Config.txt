@@ -1,5 +1,5 @@
 [OPTIONS]
-Threads		= 8
+Threads		= 4
 
 
 [PATHS]

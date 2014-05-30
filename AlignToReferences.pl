@@ -27,7 +27,7 @@ my @LineNo = $Config->getAll("VECTORS");
 foreach my $i (@LineNo){
       $q->enqueue($i);
 }
-for(my$i=0;$i<$nThreads;$i++){
+for(my$i=0;$i<=$nThreads;$i++){
       my $thr=threads->create(\&worker);
 }
 while(threads->list()>0){
@@ -39,17 +39,13 @@ while(threads->list()>0){
 sub worker {
 	my $TID=threads->tid() -1 ;
 	while(my$j=$q->dequeue_nb()){
-		my $path=$Config->get("PATHS","vector_dir")."/".$Config->get("VECTORS",$j);
-		warn "Loading $path ...\n";
+		my ($R1,$R2)=split(/\,/,$Config->get("DATA",$j));
+		my $P1=$Config->get("PATHS","data_dir")."/".$R1;
+		my $P2=$Config->get("PATHS","data_dir")."/".$R2;
 		my $outputDir = $Config->get("PATHS","output_dir")."/".$Config->get("CELL_LINE",$j);
-		mkdir $outputDir unless -e $outputDir;
-		my $file=$outputDir."/".$Config->get("CELL_LINE",$j).".ref.fasta";
-		my $cmd="cat $ref $path > $file";
-		warn $cmd."\n";	
-		`$cmd`;
-		$cmd=$Config->get("PATHS","bwa")." index $file";
+		my $bwaRef=$outputDir."/".$Config->get("CELL_LINE",$j).".ref.fasta";
+		my $cmd=$Config->get("PATHS","bwa")." mem $bwaRef $P1 $P2";
 		warn $cmd."\n";
-		`$cmd`;
 	}
 }
 
