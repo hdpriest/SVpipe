@@ -1,11 +1,12 @@
 [OPTIONS]
-Threads		= 3
+Threads		= 8
 
 
 [PATHS]
 bwa 		= /Installs/bwa
 samtools	= /Installs/samtools
 delly		= /home/ec2-user/Store1/SVpipe/bin/delly_v0.5.4_parallel_linux_x86_64bit
+depthScript	= /home/ec2-user/Store1/SVpipe/GetMaxPerContig.pl
 reference	= /home/ec2-user/Store1/References/CHO_novectors.ref.fasta
 vector_dir	= /home/ec2-user/Store1/References/Vectors
 data_dir	= /home/ec2-user/Store1/Data

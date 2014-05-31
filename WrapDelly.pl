@@ -46,19 +46,14 @@ sub worker {
 		my $samtools = $Config->get("PATHS","samtools");
 		my $bwaRef=$outputDir."/".$Config->get("CELL_LINE",$j).".ref.fasta";
 		my $bwaRoot=$outputDir."/Alignments";
-		my $bwaAln=$bwaRoot.".bam";
-		my $cmd=$Config->get("PATHS","bwa")." mem -t $nThreads $bwaRef $P1 $P2 | $samtools view -bS - > $bwaAln";
-		warn $cmd."\n";
-		`$cmd`;
-		my $sorted=$bwaRoot.".sorted";
-		$cmd = $samtools." sort $bwaAln $sorted";
-		`$cmd`;
-		$cmd = $samtools." index ".$sorted.".bam";
-		`$cmd`;
-		my $depthscript = $Config->get("PATHS","depthScript");
-		my $depthout	= $outputDir."/ContigDepths.txt";
-		$cmd = $samtools." depth ".$sorted.".bam | $depthscript > ContigDepths.txt";
-		`$cmd`;
+		my $depths =$outputDir."/ContigDepths.txt";
+		my $bwaAln=$bwaRoot.".sorted.bam";
+		my $RunDelly=$Config->get("PATHS","RunDelly");
+		my $delly = $Config->get("PATHS","delly");
+		my $cmd="$RunDelly $bwaRef $depths 50 ".$Config->get("CELL_LINE",$j)." ".$bwaAln;
+		#`$cmd`;
+		print $cmd."\n";
+#usage: perl RunDelly.bestN.pl <reference fasta file> <file of contig IDs to search> <N - number of contigs to search (i.e., '50' for top 50) <id of insertional chromosome> <PE bam><
 	}
 }
 
