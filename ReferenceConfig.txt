@@ -1,0 +1,51 @@
+[OPTIONS]
+Threads		= 3
+
+
+[PATHS]
+bwa 		= /Installs/bwa
+samtools	= /Installs/samtools
+delly		= /home/ec2-user/Store1/SVpipe/bin/delly_v0.5.4_parallel_linux_x86_64bit
+reference	= /home/ec2-user/Store1/References/CHO_novectors.ref.fasta
+vector_dir	= /home/ec2-user/Store1/References/Vectors
+data_dir	= /home/ec2-user/Store1/Data
+output_dir	= /home/ec2-user/Store1/Results
+
+[CELL_LINE]
+#### Cell_LINE_No = directory suffix (attached to output_dir)
+1 = pGC1
+2 = pGC2
+10 = pGC10
+11 = pGC11
+12 = pGC12
+13 = pGC13
+14 = pGC14
+15 = pGC15
+16 = pGC16
+17 = pGC17
+
+[DATA]
+### Cell_LINE_No = Read1.fastq,Read2.fastq
+1 = pGC1_S1_L001_R1_001.fastq,pGC1_S1_L001_R2_001.fastq 
+2 = pGC2_S2_L001_R1_001.fastq,pGC2_S2_L001_R2_001.fastq
+10 = pGC10_S10_L001_R1_001.fastq,pGC10_S10_L001_R2_001.fastq
+11 = pGC11_S11_L001_R1_001.fastq,pGC11_S11_L001_R2_001.fastq
+12 = pGC12_S12_L001_R1_001.fastq,pGC12_S12_L001_R2_001.fastq
+13 = pGC13_S13_L001_R1_001.fastq,pGC13_S13_L001_R2_001.fastq
+14 = pGC14_S14_L001_R1_001.fastq,pGC14_S14_L001_R2_001.fastq
+15 = pGC15_S15_L001_R1_001.fastq,pGC15_S15_L001_R2_001.fastq
+16 = pGC16_S16_L001_R1_001.fastq,pGC16_S16_L001_R2_001.fastq
+17 = pGC17_S17_L001_R1_001.fastq,pGC17_S17_L001_R2_001.fastq
+
+[VECTORS]
+### Cell_Line_No = Vector.fasta
+10 = pGC10.fasta
+11 = pGC11.fasta
+12 = pGC12.fasta
+13 = pGC13.fasta
+14 = pGC14.fasta
+15 = pGC15.fasta
+16 = pGC16.fasta
+17 = pGC17.fasta
+1 = pGC1.fasta
+2 = pGC2.fasta
